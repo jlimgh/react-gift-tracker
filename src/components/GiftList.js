@@ -3,8 +3,8 @@ import { removeGift } from '../store';
 
 function GiftList() {
     const dispatch = useDispatch();
-    const gifts = useSelector((state) => {
-        return state.gifts.data;
+    const gifts = useSelector(({gifts: { data, searchTerm}}) => {
+        return data.filter((gift) => gift.name.toLowerCase().includes(searchTerm.toLowerCase()))
     });
 
     const handleGiftDelete = (gift) => {

@@ -7,7 +7,7 @@ const giftsSlice = createSlice({
         data: []
     },
     reducers: {
-        changeSearchTem(state, action) {
+        changeSearchTerm(state, action) {
             state.searchTerm = action.payload
         },
         addGift(state, action) {
@@ -28,5 +28,5 @@ const giftsSlice = createSlice({
     }
 });
 
-export const { changeSearchTem, addGift, removeGift } = giftsSlice.actions;
+export const { changeSearchTerm, addGift, removeGift } = giftsSlice.actions;
 export const giftsReducer = giftsSlice.reducer;

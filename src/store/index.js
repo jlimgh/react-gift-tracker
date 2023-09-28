@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { giftsReducer, addGift, removeGift, changeSearchTem } from "./slices/giftsSlice";
+import { giftsReducer, addGift, removeGift, changeSearchTerm } from "./slices/giftsSlice";
 import { formReducer, changeName, changeCost } from "./slices/formSlice";
 
 const store = configureStore({
@@ -15,5 +15,5 @@ export {
     changeCost,
     addGift,
     removeGift,
-    changeSearchTem
+    changeSearchTerm
 }
