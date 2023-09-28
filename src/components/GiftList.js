@@ -3,8 +3,14 @@ import { removeGift } from '../store';
 
 function GiftList() {
     const dispatch = useDispatch();
-    const gifts = useSelector(({gifts: { data, searchTerm}}) => {
-        return data.filter((gift) => gift.name.toLowerCase().includes(searchTerm.toLowerCase()))
+    const { gifts, name } = useSelector(({form, gifts: { data, searchTerm}}) => {
+        const filteredGifts = data.filter((gift) => gift.name.toLowerCase().includes(searchTerm.toLowerCase()))
+
+        return {
+            gifts: filteredGifts,
+            name: form.name
+        }
+
     });
 
     const handleGiftDelete = (gift) => {
@@ -12,8 +18,9 @@ function GiftList() {
     }
 
     const renderedGifts = gifts.map((gift) => {
+        const bold = name && gift.name.toLowerCase().includes(name.toLowerCase())
         return (
-            <div key={gift.id} className="panel">
+            <div key={gift.id} className={`panel ${bold && 'bold'}`}>
                 <p>
                     {gift.name} - ${gift.cost}
                 </p>
